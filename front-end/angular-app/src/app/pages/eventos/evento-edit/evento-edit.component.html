@@ -1,0 +1,47 @@
+<div class="container">
+  <h2>✏️ Editar Evento</h2>
+
+  <form (ngSubmit)="atualizar()">
+
+    <div class="form-group">
+      <label>Título</label>
+      <input
+        type="text"
+        name="titulo"
+        [(ngModel)]="evento.titulo"
+        required />
+    </div>
+
+    <div class="form-group">
+      <label>Descrição</label>
+      <input
+        type="text"
+        name="descricao"
+        [(ngModel)]="evento.descricao"
+        required />
+    </div>
+
+    <div class="form-group">
+      <label>Local</label>
+      <input
+        type="text"
+        name="local"
+        [(ngModel)]="evento.local"
+        required />
+    </div>
+
+    <div class="form-group">
+      <label>Data e Hora</label>
+      <input
+        type="datetime-local"
+        name="dataEvento"
+        [(ngModel)]="evento.dataEvento"
+        required />
+    </div>
+
+    <button type="submit">
+      💾 Atualizar
+    </button>
+
+  </form>
+</div>

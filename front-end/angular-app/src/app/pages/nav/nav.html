@@ -1,0 +1,27 @@
+<nav class="navbar">
+
+  <button class="menu-btn" (click)="toggleMenu()">
+    ☰ Menu
+  </button>
+
+  <div class="logo">Seja bem-vindo!</div>
+
+</nav>
+
+<div class="menu" *ngIf="menuAberto">
+
+ 
+  <button class="menu-item" (click)="toggleEventos()">
+     Eventos
+  </button>
+
+  <div class="submenu" *ngIf="eventosAberto">
+    <button class="submenu-item" routerLink="/eventos">
+      📋 Listar Eventos
+    </button>
+
+    <button class="submenu-item" routerLink="/eventos/novo">
+      ➕ Novo Evento
+    </button>
+  </div>
+</div>

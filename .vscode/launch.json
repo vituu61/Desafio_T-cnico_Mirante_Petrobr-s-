@@ -1,0 +1,42 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CrudApplication",
+            "request": "launch",
+            "mainClass": "com.example.crud.demo.CrudApplication",
+            "projectName": "crud-carros"
+        },
+        {
+            "type": "java",
+            "name": "CrudApplication",
+            "request": "launch",
+            "mainClass": "com.example.crud.demo.CrudApplication",
+            "projectName": "crud-ev${extensionInstallFolder:publisher.extension}"
+        },
+        {
+            "type": "java",
+            "name": "CrudApplication",
+            "request": "launch",
+            "mainClass": "com.example.crud.demo.CrudApplication",
+            "projectName": "crud-eventos"
+        },
+        {
+            "type": "java",
+            "name": "Application",
+            "request": "launch",
+            "mainClass": "com.example.crud.demo.Application",
+            "projectName": "demo"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-CrudApplication<demo>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.crud.demo.CrudApplication",
+            "projectName": "demo",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

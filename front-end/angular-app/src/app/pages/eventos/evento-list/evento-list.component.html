@@ -1,0 +1,63 @@
+<div class="container">
+    <h2>📅 Lista de Eventos</h2>
+
+
+  <input type="text"
+       placeholder="Buscar por título, descrição ou local..."
+       [(ngModel)]="filtro" />
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Descrição</th>
+                <th>Local</th>
+                <th>Data e Hora</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let evento of eventosPaginados">
+                <td>{{ evento.id }}</td>
+                <td>{{ evento.titulo }}</td>
+                <td>{{ evento.descricao }}</td>
+                <td>{{ evento.local }}</td>
+                <td>{{ evento.dataEvento | date:'dd/MM/yyyy HH:mm' }}</td>
+
+                <td>
+                    <button (click)="editar(evento.id)">
+                        ✏️ Editar
+                    </button>
+
+                    <button (click)="deletar(evento.id)">
+                        🗑️ Deletar
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="paginacao">
+        <span
+            class="icon-btn"
+            (click)="paginaAtual = paginaAtual - 1"
+            [class.disabled]="paginaAtual === 1">
+
+            ⬅️
+        </span>
+
+        <span>
+            Página {{ paginaAtual }}
+        </span>
+
+        <span
+            class="icon-btn"
+            (click)="paginaAtual = paginaAtual + 1"
+            [class.disabled]="paginaAtual * itensPorPagina >= eventosFiltrados.length">
+
+            ➡️
+        </span>
+    </div>
+</div>

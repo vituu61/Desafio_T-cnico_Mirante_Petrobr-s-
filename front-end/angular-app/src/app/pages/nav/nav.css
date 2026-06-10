@@ -1,0 +1,76 @@
+.navbar {
+  background-color: #2c2c2c;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.logo {
+  font-weight: bold;
+}
+
+.menu-btn {
+  background-color: white;
+  color: #2c2c2c;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+/* MENU PRINCIPAL */
+.menu {
+  border-top: 1px solid #555;
+  background-color: #2c2c2c;
+  padding: 10px;
+    position: fixed;
+  left: auto;
+  top: auto;
+  width: auto;
+  height: auto;
+}
+
+/* BOTÕES PRINCIPAIS */
+.menu-item {
+    
+  background-color: white;
+  color: #2c2c2c;
+  border: none;
+  padding: 12px;
+  margin: 5px 0;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+  text-align: left;
+  font-weight: bold;
+}
+
+/* SUBMENU */
+.submenu {
+  border-bottom: 1px solid #444;
+  padding-left: 15px;
+}
+
+/* ITENS DO SUBMENU */
+.submenu-item {
+  background-color: #dcdcdc;
+  color: #2c2c2c;
+  border: none;
+  padding: 10px;
+  margin: 3px 0;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+  text-align: left;
+}
+.menu,
+.submenu {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+
+  
+
