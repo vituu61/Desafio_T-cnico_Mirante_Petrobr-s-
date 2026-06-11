@@ -5,22 +5,48 @@
 
     <div class="form-group">
       <label>Título</label>
-      <input type="text" name="titulo" [(ngModel)]="evento.titulo" required />
+      <input
+        type="text"
+        name="titulo"
+        [(ngModel)]="evento.titulo"
+        maxlength="100"
+        required
+      />
+      <small>{{ evento.titulo?.length || 0 }}/100</small>
     </div>
 
     <div class="form-group">
       <label>Descrição</label>
-      <input type="text" name="descricao" [(ngModel)]="evento.descricao" required />
+      <textarea
+        name="descricao"
+        [(ngModel)]="evento.descricao"
+        maxlength="1000"
+        rows="5"
+        required>
+      </textarea>
+      <small>{{ evento.descricao?.length || 0 }}/1000</small>
     </div>
 
     <div class="form-group">
       <label>Local</label>
-      <input type="text" name="local" [(ngModel)]="evento.local" required />
+      <input
+        type="text"
+        name="local"
+        [(ngModel)]="evento.local"
+        maxlength="200"
+        required
+      />
+      <small>{{ evento.local?.length || 0 }}/200</small>
     </div>
 
     <div class="form-group">
       <label>Data e Hora</label>
-      <input type="datetime-local" name="dataEvento" [(ngModel)]="evento.dataEvento" required>
+      <input
+        type="datetime-local"
+        name="dataEvento"
+        [(ngModel)]="evento.dataEvento"
+        required
+      />
 
       <p>{{ evento.dataEvento }}</p>
     </div>
