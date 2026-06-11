@@ -1,0 +1,8 @@
+CREATE TABLE tb_evento (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(100) NOT NULL,
+    descricao VARCHAR(1000) NOT NULL,
+    local VARCHAR(200) NOT NULL,
+    data_evento DATETIME NOT NULL,
+    deleted BOOLEAN NOT NULL DEFAULT FALSE
+);
