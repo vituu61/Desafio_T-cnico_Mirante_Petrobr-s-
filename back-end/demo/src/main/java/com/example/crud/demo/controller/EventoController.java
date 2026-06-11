@@ -3,7 +3,6 @@ package com.example.crud.demo.controller;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,23 +18,25 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.crud.demo.entity.Evento;
 import com.example.crud.demo.service.EventoService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/eventos")
 public class EventoController {
 
-    @Autowired
-    private EventoService eventoService;
+    private final EventoService eventoService;
 
+    public EventoController(EventoService eventoService) {
+        this.eventoService = eventoService;
+    }
 
-     @GetMapping
+    @GetMapping
     public ResponseEntity<List<Evento>> listarTodos() {
-
         List<Evento> eventos = eventoService.listarTodos();
-
         return ResponseEntity.ok(eventos);
     }
-    // GET - buscar por id
+
     @GetMapping("/{id}")
     public ResponseEntity<Evento> buscarPorId(@PathVariable @NonNull Long id) {
 
@@ -48,16 +49,12 @@ public class EventoController {
         return ResponseEntity.notFound().build();
     }
 
-    // POST - criar evento
     @PostMapping
-    public ResponseEntity<Evento> salvar(@RequestBody @NonNull Evento evento) {
-
+    public ResponseEntity<Evento> salvar(@Valid @RequestBody Evento evento) {
         Evento novoEvento = eventoService.salvar(evento);
-
         return ResponseEntity.ok(novoEvento);
     }
 
-    // DELETE - remover evento
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable @NonNull Long id) {
 
@@ -66,7 +63,6 @@ public class EventoController {
         return ResponseEntity.noContent().build();
     }
 
-    // PUT - atualizar evento
     @PutMapping("/{id}")
     public ResponseEntity<Evento> atualizar(@PathVariable @NonNull Long id, @RequestBody @NonNull Evento evento) {
         Optional<Evento> eventoAtualizado = eventoService.atualizar(id, evento);

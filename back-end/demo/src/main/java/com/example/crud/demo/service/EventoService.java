@@ -3,7 +3,6 @@ package com.example.crud.demo.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
@@ -13,31 +12,37 @@ import com.example.crud.demo.repository.EventoRepository;
 @Service
 public class EventoService {
 
-    @Autowired
-    private EventoRepository eventoRepository;
+    private final EventoRepository eventoRepository;
 
-    // LISTAR TODOS
+    public EventoService(EventoRepository eventoRepository) {
+        this.eventoRepository = eventoRepository;
+    }
+
     public List<Evento> listarTodos() {
-        return eventoRepository.findAll();
+        return eventoRepository.findByDeletedFalse();
     }
 
-    // BUSCAR POR ID
     public Optional<Evento> buscarPorId(@NonNull Long id) {
-        return eventoRepository.findById(id);
-    }
+    return eventoRepository.findById(id)
+            .filter(evento -> !evento.getDeleted());
+}
 
-    // SALVAR
     public Evento salvar(@NonNull Evento evento) {
         return eventoRepository.save(evento);
     }
 
-    // DELETAR
-    public void deletar(@NonNull Long id) {
-        eventoRepository.deleteById(id);
-    }
+   public void deletar(Long id) {
 
-    // ATUALIZAR
+    Evento evento = eventoRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Evento não encontrado"));
+
+    evento.setDeleted(true);
+
+    eventoRepository.save(evento);
+}
+
     public Optional<Evento> atualizar(@NonNull Long id, @NonNull Evento eventoAtualizado) {
+
         Optional<Evento> eventoExistenteOpt = eventoRepository.findById(id);
 
         if (eventoExistenteOpt.isEmpty()) {
